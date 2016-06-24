@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+
+<title>util-linux - util-linux 使用筆記</title>
+
+
+<link rel="canonical" href="https://foreachsam.github.io/book-util-util-linux/book/content/deb-package/util-linux/">
+
+
+<meta name="author" content="foreachsam">
+
+
+<meta property="og:url" content="https://foreachsam.github.io/book-util-util-linux/book/content/deb-package/util-linux/">
+<meta property="og:title" content="util-linux - util-linux 使用筆記">
+
+<meta name="apple-mobile-web-app-title" content="util-linux - util-linux 使用筆記">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">  
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../assets/images/favicon.ico">
+<link rel="icon" type="image/x-icon" href="../../../../../../assets/images/favicon.ico">
+<style>
+	@font-face {
+		font-family: 'Icon';
+		src: url('../../../assets/fonts/icon.eot?52m981');
+		src: url('../../../assets/fonts/icon.eot?#iefix52m981') format('embedded-opentype'),
+		url('../../../assets/fonts/icon.woff?52m981') format('woff'),
+		url('../../../assets/fonts/icon.ttf?52m981') format('truetype'),
+		url('../../../assets/fonts/icon.svg?52m981#icon') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+</style>
+<link rel="stylesheet" href="../../../assets/stylesheets/application-0dac3e5884.css"> 
+<link rel="stylesheet" href="../../../assets/stylesheets/palettes-05ab2406df.css">     
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono">
+<style>
+	body,
+	input {
+		font-family: 'Roboto',
+		Helvetica,
+		Arial,
+		sans-serif;
+	}
+
+	pre,
+	code {
+		font-family: 'Roboto Mono',
+		'Courier New',
+		'Courier',
+		monospace;
+	}
+</style>
+ 
+<script src="../../../assets/javascripts/modernizr-4ab42b99fd.js"></script>
+
+
+</head>
+
+
+  
+
+<body class="palette-primary-pink palette-accent-light-pink">
+	
+	<div class="backdrop">
+		<div class="backdrop-paper"></div>
+	</div>
+	<input class="toggle" type="checkbox" id="toggle-drawer">
+	<input class="toggle" type="checkbox" id="toggle-search">
+	<label class="toggle-button overlay" for="toggle-drawer"></label>
+	<header class="header">
+		<nav aria-label="Header">
+	<div class="bar default">
+		<div class="button button-menu" role="button" aria-label="Menu">
+			<label class="toggle-button icon icon-menu" for="toggle-drawer">
+				<span></span>
+			</label>
+		</div>
+		<div class="stretch">
+			<div class="title">
+				
+				<span class="path">
+            
+              
+                deb package <i class="icon icon-link"></i>
+              
+            
+          </span>  util-linux
+			</div>
+		</div>
+		  
+		<div class="button button-github" role="button" aria-label="GitHub">
+			<a href="https://github.com/foreachsam/book-util-util-linux" title="@foreachsam/book-util-util-linux on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+		</div>
+		
+		<div class="button button-search" role="button" aria-label="Search">
+			<label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+		</div>
+	</div>
+	<div class="bar search">
+		<div class="button button-close" role="button" aria-label="Close">
+			<label class="toggle-button icon icon-back" for="toggle-search"></label>
+		</div>
+		<div class="stretch">
+			<div class="field">
+				<input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+			</div>
+		</div>
+		<div class="button button-reset" role="button" aria-label="Search">
+			<button class="toggle-button icon icon-close" id="reset-search"></button>
+		</div>
+	</div>
+</nav>
+	</header>
+	<main class="main">
+		
+		<div class="drawer">
+			<nav aria-label="Navigation">
+
+	<a href="https://foreachsam.github.io/book-util-util-linux/book" class="project" title="util-linux 使用筆記">
+		<div class="banner">
+
+			<div class="name">
+				<strong>util-linux 使用筆記<span class="version"></span></strong>
+
+			</div>
+		</div>
+	</a>
+	<div class="scrollable">
+		<div class="wrapper">
+
+			<div class="toc">
+				<ul>
+
+	
+<li>
+	<div itemscope itemtype="http://schema.org/Article">
+		<a class="" title="首頁" href="../../.." itemprop="url">
+			首頁
+    	</a>
+	</div>
+	
+</li>
+
+
+	
+<li>
+	<span class="section">參考文件</span>
+	<ul>
+		
+
+			
+<li>
+	<div itemscope itemtype="http://schema.org/Article">
+		<a class="" title="manual" href="../../reference/manual/" itemprop="url">
+			manual
+    	</a>
+	</div>
+	
+</li>
+
+
+		
+	</ul>
+</li>
+
+
+	
+<li>
+	<span class="section">deb package</span>
+	<ul>
+		
+
+			
+<li>
+	<div itemscope itemtype="http://schema.org/Article">
+		<a class="" title="index" href="../" itemprop="url">
+			index
+    	</a>
+	</div>
+	
+</li>
+
+
+		
+
+			
+<li>
+	<div itemscope itemtype="http://schema.org/Article">
+		<a class="current" title="util-linux" href="./" itemprop="url">
+			util-linux
+    	</a>
+	</div>
+	    
+	<ul>
+		
+		<li class="anchor" >
+			<div itemscope itemtype="http://schema.org/Article">
+				<a title="下載套件" href="#_1" >
+                	下載套件
+				</a>
+			</div>
+		</li>
+		
+		<li class="anchor" >
+			<div itemscope itemtype="http://schema.org/Article">
+				<a title="解開套件" href="#_2" >
+                	解開套件
+				</a>
+			</div>
+		</li>
+		
+		<li class="anchor" >
+			<div itemscope itemtype="http://schema.org/Article">
+				<a title="觀看資料夾結構" href="#_3" >
+                	觀看資料夾結構
+				</a>
+			</div>
+		</li>
+		
+		<li class="anchor" >
+			<div itemscope itemtype="http://schema.org/Article">
+				<a title="manpage" href="#manpage" >
+                	manpage
+				</a>
+			</div>
+		</li>
+		
+		<li class="anchor" >
+			<div itemscope itemtype="http://schema.org/Article">
+				<a title="下載 Source Package" href="#source-package" >
+                	下載 Source Package
+				</a>
+			</div>
+		</li>
+		
+		<li class="anchor" >
+			<div itemscope itemtype="http://schema.org/Article">
+				<a title="套件資訊" href="#_4" >
+                	套件資訊
+				</a>
+			</div>
+		</li>
+		
+		<li class="anchor" >
+			<div itemscope itemtype="http://schema.org/Article">
+				<a title="原始碼套件資訊" href="#_5" >
+                	原始碼套件資訊
+				</a>
+			</div>
+		</li>
+		
+	</ul>
+	 
+</li>
+
+
+		
+	</ul>
+</li>
+
+
+	
+<li>
+	<span class="section">command</span>
+	<ul>
+		
+
+			
+<li>
+	<div itemscope itemtype="http://schema.org/Article">
+		<a class="" title="lsblk" href="../../command/lsblk/" itemprop="url">
+			lsblk
+    	</a>
+	</div>
+	
+</li>
+
+
+		
+	</ul>
+</li>
+
+
+				</ul>
+
+				<hr>
+				<span class="section">The author</span>
+				<ul>
+	
+					<li>
+						<a href="https://foreachsam.github.io/" target="_blank" title="foreachsam">
+                  			foreachsam
+            			</a>
+					</li>
+	
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</nav>
+		</div>
+		<article class="article">
+			<div class="wrapper">
+				 <h1 id="util-linux">util-linux 套件探索</h1>
+<h2 id="_1">下載套件</h2>
+<p>下載「<a href="http://packages.ubuntu.com/xenial/util-linux">util-linux</a>」這個套件。</p>
+<pre class="code"><code class="language-sh">$ apt download util-linux</code></pre>
+
+
+<h2 id="_2">解開套件</h2>
+<p>解開「util-linux_2.27.1-6ubuntu3.1_amd64.deb」</p>
+<pre class="code"><code class="language-sh">$ dpkg -x util-linux_2.27.1-6ubuntu3.1_amd64.deb util-linux</code></pre>
+
+
+<h2 id="_3">觀看資料夾結構</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ tree util-linux</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>util-linux
+├── bin
+│   ├── dmesg
+│   ├── lsblk
+│   ├── more
+│   ├── mountpoint
+│   ├── tailf
+│   └── wdctl
+├── etc
+│   ├── cron.weekly
+│   │   └── fstrim
+│   ├── init
+│   │   ├── hwclock.conf
+│   │   ├── hwclock-save.conf
+│   │   └── hwclock.sh.conf
+│   ├── init.d
+│   │   └── hwclock.sh
+│   └── pam.d
+│       ├── runuser
+│       └── runuser-l
+├── lib
+│   └── udev
+│       └── hwclock-set
+├── sbin
+│   ├── agetty
+│   ├── blkdiscard
+│   ├── blkid
+│   ├── blockdev
+│   ├── cfdisk
+│   ├── chcpu
+│   ├── ctrlaltdel
+│   ├── fdisk
+│   ├── findfs
+│   ├── fsck
+│   ├── fsck.cramfs
+│   ├── fsck.minix
+│   ├── fsfreeze
+│   ├── fstrim
+│   ├── getty -&gt; agetty
+│   ├── hwclock
+│   ├── isosize
+│   ├── mkfs
+│   ├── mkfs.bfs
+│   ├── mkfs.cramfs
+│   ├── mkfs.minix
+│   ├── mkswap
+│   ├── pivot_root
+│   ├── raw
+│   ├── runuser
+│   ├── sfdisk
+│   ├── sulogin
+│   ├── swaplabel
+│   ├── switch_root
+│   ├── wipefs
+│   └── zramctl
+└── usr
+    ├── bin
+    │   ├── addpart
+    │   ├── chrt
+    │   ├── delpart
+    │   ├── fallocate
+    │   ├── flock
+    │   ├── getopt
+    │   ├── i386 -&gt; setarch
+    │   ├── ionice
+    │   ├── ipcmk
+    │   ├── ipcrm
+    │   ├── ipcs
+    │   ├── last
+    │   ├── lastb -&gt; last
+    │   ├── line
+    │   ├── linux32 -&gt; setarch
+    │   ├── linux64 -&gt; setarch
+    │   ├── lscpu
+    │   ├── lsipc
+    │   ├── lslocks
+    │   ├── lslogins
+    │   ├── mcookie
+    │   ├── mesg
+    │   ├── namei
+    │   ├── nsenter
+    │   ├── partx
+    │   ├── pg
+    │   ├── prlimit
+    │   ├── rename.ul
+    │   ├── resizepart
+    │   ├── rev
+    │   ├── setarch
+    │   ├── setsid
+    │   ├── setterm
+    │   ├── taskset
+    │   ├── unshare
+    │   ├── utmpdump
+    │   ├── whereis
+    │   └── x86_64 -&gt; setarch
+    ├── lib
+    │   └── mime
+    │       └── packages
+    │           └── util-linux
+    ├── sbin
+    │   ├── fdformat
+    │   ├── ldattach
+    │   ├── readprofile
+    │   ├── rtcwake
+    │   └── tunelp
+    └── share
+        ├── bash-completion
+        │   └── completions
+        │       ├── addpart
+        │       ├── blkdiscard
+        │       ├── blkid
+        │       ├── blockdev
+        │       ├── cfdisk
+        │       ├── chcpu
+        │       ├── chrt
+        │       ├── ctrlaltdel
+        │       ├── delpart
+        │       ├── dmesg
+        │       ├── fallocate
+        │       ├── fdformat
+        │       ├── fdisk
+        │       ├── flock
+        │       ├── fsck
+        │       ├── fsck.cramfs
+        │       ├── fsck.minix
+        │       ├── fsfreeze
+        │       ├── fstrim
+        │       ├── getopt
+        │       ├── hwclock
+        │       ├── ionice
+        │       ├── ipcrm
+        │       ├── ipcs
+        │       ├── isosize
+        │       ├── last
+        │       ├── ldattach
+        │       ├── lsblk
+        │       ├── lscpu
+        │       ├── lsipc
+        │       ├── lslocks
+        │       ├── mcookie
+        │       ├── mesg
+        │       ├── mkfs
+        │       ├── mkfs.bfs
+        │       ├── mkfs.cramfs
+        │       ├── mkfs.minix
+        │       ├── mkswap
+        │       ├── more
+        │       ├── mountpoint
+        │       ├── namei
+        │       ├── nsenter
+        │       ├── partx
+        │       ├── pg
+        │       ├── pivot_root
+        │       ├── prlimit
+        │       ├── raw
+        │       ├── readprofile
+        │       ├── resizepart
+        │       ├── rev
+        │       ├── rtcwake
+        │       ├── runuser
+        │       ├── setarch
+        │       ├── setsid
+        │       ├── setterm
+        │       ├── sfdisk
+        │       ├── swaplabel
+        │       ├── tailf
+        │       ├── taskset
+        │       ├── tunelp
+        │       ├── unshare
+        │       ├── utmpdump
+        │       ├── wdctl
+        │       ├── whereis
+        │       ├── wipefs
+        │       └── zramctl
+        ├── doc
+        │   └── util-linux
+        │       ├── 00-about-docs.txt
+        │       ├── AUTHORS.gz
+        │       ├── blkid.txt
+        │       ├── cal.txt
+        │       ├── changelog.Debian.gz -&gt; ../libfdisk1/changelog.Debian.gz
+        │       ├── col.txt
+        │       ├── copyright
+        │       ├── deprecated.txt
+        │       ├── examples
+        │       │   ├── filesystems
+        │       │   ├── fstab
+        │       │   ├── fstab.example2
+        │       │   ├── fstrim.service
+        │       │   ├── fstrim.timer
+        │       │   ├── getopt-parse.bash
+        │       │   ├── getopt-parse.tcsh
+        │       │   ├── motd
+        │       │   ├── securetty
+        │       │   ├── shells
+        │       │   └── udev-raw.rules
+        │       ├── getopt_changelog.txt
+        │       ├── getopt.txt
+        │       ├── howto-build-sys.txt
+        │       ├── howto-compilation.txt
+        │       ├── howto-contribute.txt.gz
+        │       ├── howto-debug.txt
+        │       ├── howto-man-page.txt.gz
+        │       ├── howto-pull-request.txt.gz
+        │       ├── howto-tests.txt
+        │       ├── howto-usage-function.txt.gz
+        │       ├── hwclock.txt
+        │       ├── modems-with-agetty.txt
+        │       ├── mount.txt
+        │       ├── NEWS.Debian.gz
+        │       ├── PAM-configuration.txt
+        │       ├── pg.txt
+        │       ├── poeigl.txt.gz
+        │       ├── releases
+        │       │   ├── v2.13-ReleaseNotes.gz
+        │       │   ├── v2.14-ReleaseNotes.gz
+        │       │   ├── v2.15-ReleaseNotes.gz
+        │       │   ├── v2.16-ReleaseNotes.gz
+        │       │   ├── v2.17-ReleaseNotes.gz
+        │       │   ├── v2.18-ReleaseNotes.gz
+        │       │   ├── v2.19-ReleaseNotes.gz
+        │       │   ├── v2.20-ReleaseNotes.gz
+        │       │   ├── v2.21-ReleaseNotes.gz
+        │       │   ├── v2.22-ReleaseNotes.gz
+        │       │   ├── v2.23-ReleaseNotes.gz
+        │       │   ├── v2.24-ReleaseNotes.gz
+        │       │   ├── v2.25-ReleaseNotes.gz
+        │       │   ├── v2.26-ReleaseNotes.gz
+        │       │   ├── v2.27.1-ReleaseNotes
+        │       │   └── v2.27-ReleaseNotes.gz
+        │       ├── release-schedule.txt
+        │       └── source-code-management.txt
+        ├── lintian
+        │   └── overrides
+        │       └── util-linux
+        └── man
+            ├── man1
+            │   ├── chrt.1.gz
+            │   ├── dmesg.1.gz
+            │   ├── fallocate.1.gz
+            │   ├── flock.1.gz
+            │   ├── getopt.1.gz
+            │   ├── ionice.1.gz
+            │   ├── ipcmk.1.gz
+            │   ├── ipcrm.1.gz
+            │   ├── ipcs.1.gz
+            │   ├── last.1.gz
+            │   ├── lastb.1.gz -&gt; last.1.gz
+            │   ├── line.1.gz
+            │   ├── linux32.1.gz -&gt; ../man8/setarch.8.gz
+            │   ├── linux64.1.gz -&gt; ../man8/setarch.8.gz
+            │   ├── lscpu.1.gz
+            │   ├── lsipc.1.gz
+            │   ├── lslogins.1.gz
+            │   ├── mcookie.1.gz
+            │   ├── mesg.1.gz
+            │   ├── more.1.gz
+            │   ├── mountpoint.1.gz
+            │   ├── namei.1.gz
+            │   ├── nsenter.1.gz
+            │   ├── pg.1.gz
+            │   ├── prlimit.1.gz
+            │   ├── rename.ul.1.gz
+            │   ├── rev.1.gz
+            │   ├── runuser.1.gz
+            │   ├── setsid.1.gz
+            │   ├── setterm.1.gz
+            │   ├── tailf.1.gz
+            │   ├── taskset.1.gz
+            │   ├── unshare.1.gz
+            │   ├── utmpdump.1.gz
+            │   └── whereis.1.gz
+            ├── man5
+            │   ├── hwclock.5.gz
+            │   └── terminal-colors.d.5.gz
+            └── man8
+                ├── addpart.8.gz
+                ├── agetty.8.gz
+                ├── blkdiscard.8.gz
+                ├── blkid.8.gz
+                ├── blockdev.8.gz
+                ├── cfdisk.8.gz
+                ├── chcpu.8.gz
+                ├── ctrlaltdel.8.gz
+                ├── delpart.8.gz
+                ├── fdformat.8.gz
+                ├── fdisk.8.gz
+                ├── findfs.8.gz
+                ├── fsck.8.gz
+                ├── fsck.cramfs.8.gz
+                ├── fsck.minix.8.gz
+                ├── fsfreeze.8.gz
+                ├── fstrim.8.gz
+                ├── getty.8.gz -&gt; agetty.8.gz
+                ├── hwclock.8.gz
+                ├── i386.8.gz -&gt; setarch.8.gz
+                ├── isosize.8.gz
+                ├── ldattach.8.gz
+                ├── lsblk.8.gz
+                ├── lslocks.8.gz
+                ├── mkfs.8.gz
+                ├── mkfs.bfs.8.gz
+                ├── mkfs.cramfs.8.gz
+                ├── mkfs.minix.8.gz
+                ├── mkswap.8.gz
+                ├── partx.8.gz
+                ├── pivot_root.8.gz
+                ├── raw.8.gz
+                ├── readprofile.8.gz
+                ├── resizepart.8.gz
+                ├── rtcwake.8.gz
+                ├── setarch.8.gz
+                ├── sfdisk.8.gz
+                ├── sulogin.8.gz
+                ├── swaplabel.8.gz
+                ├── switch_root.8.gz
+                ├── tunelp.8.gz
+                ├── wdctl.8.gz
+                ├── wipefs.8.gz
+                ├── x86_64.8.gz -&gt; setarch.8.gz
+                └── zramctl.8.gz
+
+28 directories, 292 files</code></pre>
+
+
+<p>若有安裝這個套件的話，可執行</p>
+<pre class="code"><code class="language-sh">$ dpkg -L util-linux</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>/.
+/sbin
+/sbin/swaplabel
+/sbin/fsck.minix
+/sbin/pivot_root
+/sbin/agetty
+/sbin/cfdisk
+/sbin/blockdev
+/sbin/mkfs
+/sbin/blkdiscard
+/sbin/zramctl
+/sbin/switch_root
+/sbin/ctrlaltdel
+/sbin/wipefs
+/sbin/hwclock
+/sbin/mkswap
+/sbin/raw
+/sbin/runuser
+/sbin/chcpu
+/sbin/fstrim
+/sbin/fsfreeze
+/sbin/fsck
+/sbin/findfs
+/sbin/sfdisk
+/sbin/fdisk
+/sbin/isosize
+/sbin/blkid
+/sbin/sulogin
+/sbin/mkfs.minix
+/sbin/mkfs.bfs
+/sbin/fsck.cramfs
+/sbin/mkfs.cramfs
+/etc
+/etc/init.d
+/etc/init.d/hwclock.sh
+/etc/cron.weekly
+/etc/cron.weekly/fstrim
+/etc/init
+/etc/init/hwclock.sh.conf
+/etc/init/hwclock-save.conf
+/etc/init/hwclock.conf
+/etc/pam.d
+/etc/pam.d/runuser
+/etc/pam.d/runuser-l
+/bin
+/bin/wdctl
+/bin/dmesg
+/bin/more
+/bin/tailf
+/bin/mountpoint
+/bin/lsblk
+/lib
+/lib/udev
+/lib/udev/hwclock-set
+/usr
+/usr/sbin
+/usr/sbin/ldattach
+/usr/sbin/rtcwake
+/usr/sbin/fdformat
+/usr/sbin/tunelp
+/usr/sbin/readprofile
+/usr/bin
+/usr/bin/unshare
+/usr/bin/chrt
+/usr/bin/resizepart
+/usr/bin/lsipc
+/usr/bin/getopt
+/usr/bin/whereis
+/usr/bin/lscpu
+/usr/bin/lslocks
+/usr/bin/utmpdump
+/usr/bin/mesg
+/usr/bin/namei
+/usr/bin/lslogins
+/usr/bin/setarch
+/usr/bin/ipcrm
+/usr/bin/ipcs
+/usr/bin/setsid
+/usr/bin/prlimit
+/usr/bin/delpart
+/usr/bin/last
+/usr/bin/flock
+/usr/bin/setterm
+/usr/bin/ipcmk
+/usr/bin/partx
+/usr/bin/line
+/usr/bin/pg
+/usr/bin/rev
+/usr/bin/taskset
+/usr/bin/fallocate
+/usr/bin/nsenter
+/usr/bin/rename.ul
+/usr/bin/ionice
+/usr/bin/mcookie
+/usr/bin/addpart
+/usr/lib
+/usr/lib/mime
+/usr/lib/mime/packages
+/usr/lib/mime/packages/util-linux
+/usr/share
+/usr/share/lintian
+/usr/share/lintian/overrides
+/usr/share/lintian/overrides/util-linux
+/usr/share/bash-completion
+/usr/share/bash-completion/completions
+/usr/share/bash-completion/completions/ldattach
+/usr/share/bash-completion/completions/swaplabel
+/usr/share/bash-completion/completions/fsck.minix
+/usr/share/bash-completion/completions/unshare
+/usr/share/bash-completion/completions/pivot_root
+/usr/share/bash-completion/completions/chrt
+/usr/share/bash-completion/completions/resizepart
+/usr/share/bash-completion/completions/rtcwake
+/usr/share/bash-completion/completions/lsipc
+/usr/share/bash-completion/completions/getopt
+/usr/share/bash-completion/completions/cfdisk
+/usr/share/bash-completion/completions/whereis
+/usr/share/bash-completion/completions/lscpu
+/usr/share/bash-completion/completions/wdctl
+/usr/share/bash-completion/completions/lslocks
+/usr/share/bash-completion/completions/blockdev
+/usr/share/bash-completion/completions/utmpdump
+/usr/share/bash-completion/completions/mkfs
+/usr/share/bash-completion/completions/blkdiscard
+/usr/share/bash-completion/completions/zramctl
+/usr/share/bash-completion/completions/mesg
+/usr/share/bash-completion/completions/namei
+/usr/share/bash-completion/completions/dmesg
+/usr/share/bash-completion/completions/ctrlaltdel
+/usr/share/bash-completion/completions/setarch
+/usr/share/bash-completion/completions/ipcrm
+/usr/share/bash-completion/completions/wipefs
+/usr/share/bash-completion/completions/ipcs
+/usr/share/bash-completion/completions/hwclock
+/usr/share/bash-completion/completions/more
+/usr/share/bash-completion/completions/mkswap
+/usr/share/bash-completion/completions/setsid
+/usr/share/bash-completion/completions/raw
+/usr/share/bash-completion/completions/runuser
+/usr/share/bash-completion/completions/prlimit
+/usr/share/bash-completion/completions/delpart
+/usr/share/bash-completion/completions/chcpu
+/usr/share/bash-completion/completions/fdformat
+/usr/share/bash-completion/completions/fstrim
+/usr/share/bash-completion/completions/last
+/usr/share/bash-completion/completions/fsfreeze
+/usr/share/bash-completion/completions/tunelp
+/usr/share/bash-completion/completions/fsck
+/usr/share/bash-completion/completions/flock
+/usr/share/bash-completion/completions/setterm
+/usr/share/bash-completion/completions/sfdisk
+/usr/share/bash-completion/completions/fdisk
+/usr/share/bash-completion/completions/partx
+/usr/share/bash-completion/completions/tailf
+/usr/share/bash-completion/completions/isosize
+/usr/share/bash-completion/completions/pg
+/usr/share/bash-completion/completions/blkid
+/usr/share/bash-completion/completions/rev
+/usr/share/bash-completion/completions/taskset
+/usr/share/bash-completion/completions/mkfs.minix
+/usr/share/bash-completion/completions/mountpoint
+/usr/share/bash-completion/completions/mkfs.bfs
+/usr/share/bash-completion/completions/fsck.cramfs
+/usr/share/bash-completion/completions/fallocate
+/usr/share/bash-completion/completions/lsblk
+/usr/share/bash-completion/completions/nsenter
+/usr/share/bash-completion/completions/mkfs.cramfs
+/usr/share/bash-completion/completions/readprofile
+/usr/share/bash-completion/completions/ionice
+/usr/share/bash-completion/completions/mcookie
+/usr/share/bash-completion/completions/addpart
+/usr/share/doc
+/usr/share/doc/util-linux
+/usr/share/doc/util-linux/poeigl.txt.gz
+/usr/share/doc/util-linux/mount.txt
+/usr/share/doc/util-linux/howto-compilation.txt
+/usr/share/doc/util-linux/releases
+/usr/share/doc/util-linux/releases/v2.14-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.27-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.20-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.25-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.19-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.22-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.21-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.16-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.26-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.17-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.27.1-ReleaseNotes
+/usr/share/doc/util-linux/releases/v2.24-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.18-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.13-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.15-ReleaseNotes.gz
+/usr/share/doc/util-linux/releases/v2.23-ReleaseNotes.gz
+/usr/share/doc/util-linux/getopt.txt
+/usr/share/doc/util-linux/hwclock.txt
+/usr/share/doc/util-linux/howto-build-sys.txt
+/usr/share/doc/util-linux/cal.txt
+/usr/share/doc/util-linux/examples
+/usr/share/doc/util-linux/examples/fstab.example2
+/usr/share/doc/util-linux/examples/fstrim.service
+/usr/share/doc/util-linux/examples/fstrim.timer
+/usr/share/doc/util-linux/examples/udev-raw.rules
+/usr/share/doc/util-linux/examples/getopt-parse.bash
+/usr/share/doc/util-linux/examples/securetty
+/usr/share/doc/util-linux/examples/fstab
+/usr/share/doc/util-linux/examples/shells
+/usr/share/doc/util-linux/examples/motd
+/usr/share/doc/util-linux/examples/getopt-parse.tcsh
+/usr/share/doc/util-linux/examples/filesystems
+/usr/share/doc/util-linux/PAM-configuration.txt
+/usr/share/doc/util-linux/pg.txt
+/usr/share/doc/util-linux/deprecated.txt
+/usr/share/doc/util-linux/howto-man-page.txt.gz
+/usr/share/doc/util-linux/getopt_changelog.txt
+/usr/share/doc/util-linux/howto-usage-function.txt.gz
+/usr/share/doc/util-linux/howto-contribute.txt.gz
+/usr/share/doc/util-linux/source-code-management.txt
+/usr/share/doc/util-linux/howto-pull-request.txt.gz
+/usr/share/doc/util-linux/release-schedule.txt
+/usr/share/doc/util-linux/copyright
+/usr/share/doc/util-linux/modems-with-agetty.txt
+/usr/share/doc/util-linux/00-about-docs.txt
+/usr/share/doc/util-linux/AUTHORS.gz
+/usr/share/doc/util-linux/howto-debug.txt
+/usr/share/doc/util-linux/blkid.txt
+/usr/share/doc/util-linux/col.txt
+/usr/share/doc/util-linux/NEWS.Debian.gz
+/usr/share/doc/util-linux/howto-tests.txt
+/usr/share/man
+/usr/share/man/man8
+/usr/share/man/man8/chcpu.8.gz
+/usr/share/man/man8/zramctl.8.gz
+/usr/share/man/man8/mkfs.8.gz
+/usr/share/man/man8/resizepart.8.gz
+/usr/share/man/man8/wdctl.8.gz
+/usr/share/man/man8/mkfs.cramfs.8.gz
+/usr/share/man/man8/swaplabel.8.gz
+/usr/share/man/man8/hwclock.8.gz
+/usr/share/man/man8/fstrim.8.gz
+/usr/share/man/man8/findfs.8.gz
+/usr/share/man/man8/lslocks.8.gz
+/usr/share/man/man8/switch_root.8.gz
+/usr/share/man/man8/ldattach.8.gz
+/usr/share/man/man8/ctrlaltdel.8.gz
+/usr/share/man/man8/blkid.8.gz
+/usr/share/man/man8/fdformat.8.gz
+/usr/share/man/man8/rtcwake.8.gz
+/usr/share/man/man8/mkswap.8.gz
+/usr/share/man/man8/delpart.8.gz
+/usr/share/man/man8/pivot_root.8.gz
+/usr/share/man/man8/blkdiscard.8.gz
+/usr/share/man/man8/isosize.8.gz
+/usr/share/man/man8/blockdev.8.gz
+/usr/share/man/man8/fdisk.8.gz
+/usr/share/man/man8/fsck.minix.8.gz
+/usr/share/man/man8/fsck.cramfs.8.gz
+/usr/share/man/man8/sfdisk.8.gz
+/usr/share/man/man8/agetty.8.gz
+/usr/share/man/man8/addpart.8.gz
+/usr/share/man/man8/fsfreeze.8.gz
+/usr/share/man/man8/fsck.8.gz
+/usr/share/man/man8/sulogin.8.gz
+/usr/share/man/man8/raw.8.gz
+/usr/share/man/man8/cfdisk.8.gz
+/usr/share/man/man8/mkfs.bfs.8.gz
+/usr/share/man/man8/lsblk.8.gz
+/usr/share/man/man8/setarch.8.gz
+/usr/share/man/man8/mkfs.minix.8.gz
+/usr/share/man/man8/readprofile.8.gz
+/usr/share/man/man8/wipefs.8.gz
+/usr/share/man/man8/tunelp.8.gz
+/usr/share/man/man8/partx.8.gz
+/usr/share/man/man1
+/usr/share/man/man1/rename.ul.1.gz
+/usr/share/man/man1/runuser.1.gz
+/usr/share/man/man1/ipcmk.1.gz
+/usr/share/man/man1/chrt.1.gz
+/usr/share/man/man1/more.1.gz
+/usr/share/man/man1/unshare.1.gz
+/usr/share/man/man1/nsenter.1.gz
+/usr/share/man/man1/namei.1.gz
+/usr/share/man/man1/mcookie.1.gz
+/usr/share/man/man1/rev.1.gz
+/usr/share/man/man1/ipcs.1.gz
+/usr/share/man/man1/setterm.1.gz
+/usr/share/man/man1/fallocate.1.gz
+/usr/share/man/man1/utmpdump.1.gz
+/usr/share/man/man1/flock.1.gz
+/usr/share/man/man1/lsipc.1.gz
+/usr/share/man/man1/taskset.1.gz
+/usr/share/man/man1/dmesg.1.gz
+/usr/share/man/man1/mesg.1.gz
+/usr/share/man/man1/lslogins.1.gz
+/usr/share/man/man1/ipcrm.1.gz
+/usr/share/man/man1/pg.1.gz
+/usr/share/man/man1/getopt.1.gz
+/usr/share/man/man1/prlimit.1.gz
+/usr/share/man/man1/lscpu.1.gz
+/usr/share/man/man1/line.1.gz
+/usr/share/man/man1/setsid.1.gz
+/usr/share/man/man1/whereis.1.gz
+/usr/share/man/man1/tailf.1.gz
+/usr/share/man/man1/ionice.1.gz
+/usr/share/man/man1/mountpoint.1.gz
+/usr/share/man/man1/last.1.gz
+/usr/share/man/man5
+/usr/share/man/man5/terminal-colors.d.5.gz
+/usr/share/man/man5/hwclock.5.gz
+/sbin/getty
+/usr/bin/lastb
+/usr/bin/i386
+/usr/bin/linux32
+/usr/bin/x86_64
+/usr/bin/linux64
+/usr/share/doc/util-linux/changelog.Debian.gz
+/usr/share/man/man8/i386.8.gz
+/usr/share/man/man8/getty.8.gz
+/usr/share/man/man8/x86_64.8.gz
+/usr/share/man/man1/lastb.1.gz
+/usr/share/man/man1/linux64.1.gz
+/usr/share/man/man1/linux32.1.gz</code></pre>
+
+
+<h2 id="manpage">manpage</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ dpkg -L util-linux | grep '/man/man.*/' | sort</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>/usr/share/man/man1/chrt.1.gz
+/usr/share/man/man1/dmesg.1.gz
+/usr/share/man/man1/fallocate.1.gz
+/usr/share/man/man1/flock.1.gz
+/usr/share/man/man1/getopt.1.gz
+/usr/share/man/man1/ionice.1.gz
+/usr/share/man/man1/ipcmk.1.gz
+/usr/share/man/man1/ipcrm.1.gz
+/usr/share/man/man1/ipcs.1.gz
+/usr/share/man/man1/last.1.gz
+/usr/share/man/man1/lastb.1.gz
+/usr/share/man/man1/line.1.gz
+/usr/share/man/man1/linux32.1.gz
+/usr/share/man/man1/linux64.1.gz
+/usr/share/man/man1/lscpu.1.gz
+/usr/share/man/man1/lsipc.1.gz
+/usr/share/man/man1/lslogins.1.gz
+/usr/share/man/man1/mcookie.1.gz
+/usr/share/man/man1/mesg.1.gz
+/usr/share/man/man1/more.1.gz
+/usr/share/man/man1/mountpoint.1.gz
+/usr/share/man/man1/namei.1.gz
+/usr/share/man/man1/nsenter.1.gz
+/usr/share/man/man1/pg.1.gz
+/usr/share/man/man1/prlimit.1.gz
+/usr/share/man/man1/rename.ul.1.gz
+/usr/share/man/man1/rev.1.gz
+/usr/share/man/man1/runuser.1.gz
+/usr/share/man/man1/setsid.1.gz
+/usr/share/man/man1/setterm.1.gz
+/usr/share/man/man1/tailf.1.gz
+/usr/share/man/man1/taskset.1.gz
+/usr/share/man/man1/unshare.1.gz
+/usr/share/man/man1/utmpdump.1.gz
+/usr/share/man/man1/whereis.1.gz
+/usr/share/man/man5/hwclock.5.gz
+/usr/share/man/man5/terminal-colors.d.5.gz
+/usr/share/man/man8/addpart.8.gz
+/usr/share/man/man8/agetty.8.gz
+/usr/share/man/man8/blkdiscard.8.gz
+/usr/share/man/man8/blkid.8.gz
+/usr/share/man/man8/blockdev.8.gz
+/usr/share/man/man8/cfdisk.8.gz
+/usr/share/man/man8/chcpu.8.gz
+/usr/share/man/man8/ctrlaltdel.8.gz
+/usr/share/man/man8/delpart.8.gz
+/usr/share/man/man8/fdformat.8.gz
+/usr/share/man/man8/fdisk.8.gz
+/usr/share/man/man8/findfs.8.gz
+/usr/share/man/man8/fsck.8.gz
+/usr/share/man/man8/fsck.cramfs.8.gz
+/usr/share/man/man8/fsck.minix.8.gz
+/usr/share/man/man8/fsfreeze.8.gz
+/usr/share/man/man8/fstrim.8.gz
+/usr/share/man/man8/getty.8.gz
+/usr/share/man/man8/hwclock.8.gz
+/usr/share/man/man8/i386.8.gz
+/usr/share/man/man8/isosize.8.gz
+/usr/share/man/man8/ldattach.8.gz
+/usr/share/man/man8/lsblk.8.gz
+/usr/share/man/man8/lslocks.8.gz
+/usr/share/man/man8/mkfs.8.gz
+/usr/share/man/man8/mkfs.bfs.8.gz
+/usr/share/man/man8/mkfs.cramfs.8.gz
+/usr/share/man/man8/mkfs.minix.8.gz
+/usr/share/man/man8/mkswap.8.gz
+/usr/share/man/man8/partx.8.gz
+/usr/share/man/man8/pivot_root.8.gz
+/usr/share/man/man8/raw.8.gz
+/usr/share/man/man8/readprofile.8.gz
+/usr/share/man/man8/resizepart.8.gz
+/usr/share/man/man8/rtcwake.8.gz
+/usr/share/man/man8/setarch.8.gz
+/usr/share/man/man8/sfdisk.8.gz
+/usr/share/man/man8/sulogin.8.gz
+/usr/share/man/man8/swaplabel.8.gz
+/usr/share/man/man8/switch_root.8.gz
+/usr/share/man/man8/tunelp.8.gz
+/usr/share/man/man8/wdctl.8.gz
+/usr/share/man/man8/wipefs.8.gz
+/usr/share/man/man8/x86_64.8.gz
+/usr/share/man/man8/zramctl.8.gz</code></pre>
+
+
+<ul>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/chrt.1.html">chrt</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dmesg.1.html">dmesg</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/fallocate.1.html">fallocate</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/flock.1.html">flock</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/getopt.1.html">getopt</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/ionice.1.html">ionice</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/ipcmk.1.html">ipcmk</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/ipcrm.1.html">ipcrm</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/ipcs.1.html">ipcs</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/last.1.html">last</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/lastb.1.html">lastb</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/line.1.html">line</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/linux32.1.html">linux32</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/linux64.1.html">linux64</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/lscpu.1.html">lscpu</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/lsipc.1.html">lsipc</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/lslogins.1.html">lslogins</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/mcookie.1.html">mcookie</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/mesg.1.html">mesg</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/more.1.html">more</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/mountpoint.1.html">mountpoint</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/namei.1.html">namei</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/nsenter.1.html">nsenter</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/pg.1.html">pg</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/prlimit.1.html">prlimit</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/rename.ul.1.html">rename.ul</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/rev.1.html">rev</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/runuser.1.html">runuser</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/setsid.1.html">setsid</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/setterm.1.html">setterm</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/tailf.1.html">tailf</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/taskset.1.html">taskset</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/unshare.1.html">unshare</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/utmpdump.1.html">utmpdump</a></li>
+<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/whereis.1.html">whereis</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man5/hwclock.5.html">hwclock</a></li>
+<li>$ man 5 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man5/terminal-colors.d.5.html">terminal-colors.d</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/addpart.8.html">addpart</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/agetty.8.html">agetty</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/blkdiscard.8.html">blkdiscard</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/blkid.8.html">blkid</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/blockdev.8.html">blockdev</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/cfdisk.8.html">cfdisk</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/chcpu.8.html">chcpu</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/ctrlaltdel.8.html">ctrlaltdel</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/delpart.8.html">delpart</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fdformat.8.html">fdformat</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fdisk.8.html">fdisk</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/findfs.8.html">findfs</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fsck.8.html">fsck</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fsck.cramfs.8.html">fsck.cramfs</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fsck.minix.8.html">fsck.minix</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fsfreeze.8.html">fsfreeze</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fstrim.8.html">fstrim</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/getty.8.html">getty</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/hwclock.8.html">hwclock</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/i386.8.html">i386</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/isosize.8.html">isosize</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/ldattach.8.html">ldattach</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lsblk.8.html">lsblk</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lslocks.8.html">lslocks</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/mkfs.8.html">mkfs</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/mkfs.bfs.8.html">mkfs.bfs</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/mkfs.cramfs.8.html">mkfs.cramfs</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/mkfs.minix.8.html">mkfs.minix</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/mkswap.8.html">mkswap</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/partx.8.html">partx</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/pivot_root.8.html">pivot_root</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/raw.8.html">raw</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/readprofile.8.html">readprofile</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/resizepart.8.html">resizepart</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/rtcwake.8.html">rtcwake</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/setarch.8.html">setarch</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sfdisk.8.html">sfdisk</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sulogin.8.html">sulogin</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/swaplabel.8.html">swaplabel</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/switch_root.8.html">switch_root</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/tunelp.8.html">tunelp</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/wdctl.8.html">wdctl</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/wipefs.8.html">wipefs</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/x86_64.8.html">x86_64</a></li>
+<li>$ man 8 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/zramctl.8.html">zramctl</a></li>
+</ul>
+<h2 id="source-package">下載 Source Package</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ apt source util-linux</code></pre>
+
+
+<p>會下載「<a href="http://packages.ubuntu.com/source/xenial/util-linux">util-linux</a>」這個「Source Package」</p>
+<h2 id="_4">套件資訊</h2>
+<p>網址: <a href="http://packages.ubuntu.com/xenial/util-linux">http://packages.ubuntu.com/xenial/util-linux</a></p>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ apt show util-linux</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>Package: util-linux
+Version: 2.27.1-6ubuntu3.1
+Priority: required
+Essential: yes
+Section: utils
+Origin: Ubuntu
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Debian util-linux Maintainers &lt;ah-util-linux@debian.org&gt;
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Installed-Size: 3,316 kB
+Pre-Depends: libblkid1 (&gt;= 2.25), libc6 (&gt;= 2.15), libfdisk1 (&gt;= 2.27~rc1), libmount1 (&gt;= 2.25), libncursesw5 (&gt;= 6), libpam0g (&gt;= 0.99.7.1), libselinux1 (&gt;= 1.32), libsmartcols1 (&gt;= 2.27~rc1), libsystemd0, libtinfo5 (&gt;= 6), libudev1 (&gt;= 183), libuuid1 (&gt;= 2.16), zlib1g (&gt;= 1:1.1.4)
+Depends: lsb-base (&gt;= 4.1+Debian11ubuntu7), sysvinit-utils (&gt;= 2.88dsf-59.1~)
+Suggests: dosfstools, kbd | console-tools, util-linux-locales
+Breaks: bash-completion (&lt;&lt; 1:2.1-4.1~), cloud-guest-utils (&lt;&lt; 0.27-0ubuntu16), grml-debootstrap (&lt;&lt; 0.68), mac-fdisk (&lt;&lt; 0.1-16ubuntu3), mount (= 2.26.2-3), mount (= 2.26.2-3ubuntu1), pmac-fdisk (&lt;&lt; 0.1-16ubuntu3)
+Replaces: bash-completion (&lt;&lt; 1:2.1-4.1~), initscripts (&lt;&lt; 2.88dsf-59.2~), mount (= 2.26.2-3), mount (= 2.26.2-3ubuntu1), sysvinit-utils (&lt;&lt; 2.88dsf-59.1~)
+Task: minimal
+Supported: 5y
+Download-Size: 848 kB
+APT-Manual-Installed: yes
+APT-Sources: http://tw.archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages
+Description: miscellaneous system utilities
+ This package contains a number of important utilities, most of which
+ are oriented towards maintenance of your system. Some of the more
+ important utilities included in this package allow you to partition
+ your hard disk, view kernel messages, and create new filesystems.
+
+N: There is 1 additional record. Please use the '-a' switch to see it</code></pre>
+
+
+<h2 id="_5">原始碼套件資訊</h2>
+<p>網址: <a href="http://packages.ubuntu.com/source/xenial/util-linux">http://packages.ubuntu.com/source/xenial/util-linux</a></p>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ apt showsrc util-linux</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>Package: util-linux
+Binary: util-linux, util-linux-locales, mount, bsdutils, fdisk-udeb, libblkid1, libblkid1-udeb, libblkid-dev, libfdisk1, libfdisk1-udeb, libfdisk-dev, libmount1, libmount-dev, libsmartcols1, libsmartcols1-udeb, libsmartcols-dev, libuuid1, uuid-runtime, libuuid1-udeb, uuid-dev, util-linux-udeb
+Version: 2.27.1-6ubuntu3
+Priority: required
+Section: utils
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Debian util-linux Maintainers &lt;ah-util-linux@debian.org&gt;
+Build-Depends: autoconf, automake, autopoint, debhelper (&gt;= 9.20141010), dh-autoreconf, dh-exec (&gt;= 0.13), dh-systemd (&gt;= 1.5), dpkg-dev (&gt;= 1.17.14), gettext, libncurses5-dev, libncursesw5-dev, libpam0g-dev &lt;!stage1&gt;, libselinux1-dev [linux-any], libsystemd-dev [linux-any] &lt;!stage1&gt;, libtool, libudev-dev [linux-any] &lt;!stage1&gt;, pkg-config, po-debconf, systemd [linux-any] &lt;!stage1&gt;, zlib1g-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/main/u/util-linux
+Files:
+ de9dda89b6a0718d9d4f7c1713d1b6f2 3840 util-linux_2.27.1-6ubuntu3.dsc
+ 3cd2698d1363a2c64091c2dadc974647 3964512 util-linux_2.27.1.orig.tar.xz
+ 8420552cfeb4201a71998f47b7832305 82056 util-linux_2.27.1-6ubuntu3.debian.tar.xz
+Uploaders: LaMont Jones &lt;lamont@debian.org&gt;, Andreas Henriksson &lt;andreas@fatal.se&gt;, Adam Conrad &lt;adconrad@0c3.net&gt;
+Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/pkg-util-linux.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/pkg-util-linux.git
+Testsuite: autopkgtest
+Package-List:
+ bsdutils deb utils required arch=any profile=!stage1 essential=yes
+ fdisk-udeb udeb debian-installer extra arch=hurd-any,linux-any profile=!stage1
+ libblkid-dev deb libdevel optional arch=any
+ libblkid1 deb libs required arch=any
+ libblkid1-udeb udeb debian-installer optional arch=any
+ libfdisk-dev deb libdevel optional arch=any
+ libfdisk1 deb libs required arch=any
+ libfdisk1-udeb udeb debian-installer optional arch=any
+ libmount-dev deb libdevel optional arch=linux-any
+ libmount1 deb libs required arch=any
+ libsmartcols-dev deb libdevel optional arch=any
+ libsmartcols1 deb libs required arch=any
+ libsmartcols1-udeb udeb debian-installer optional arch=any
+ libuuid1 deb libs required arch=any
+ libuuid1-udeb udeb debian-installer optional arch=any
+ mount deb admin required arch=linux-any profile=!stage1 essential=yes
+ util-linux deb utils required arch=any profile=!stage1 essential=yes
+ util-linux-locales deb localization optional arch=all profile=!stage1
+ util-linux-udeb udeb debian-installer optional arch=any profile=!stage1
+ uuid-dev deb libdevel optional arch=any
+ uuid-runtime deb utils optional arch=any profile=!stage1
+Checksums-Sha1:
+ c048273c40e7f0a280294f30d822c7e438003bde 3840 util-linux_2.27.1-6ubuntu3.dsc
+ 462bca6320535d39b62216d8609da5531bfef0bb 3964512 util-linux_2.27.1.orig.tar.xz
+ 5d853b25098f78c9f8ac217daea969df6b681686 82056 util-linux_2.27.1-6ubuntu3.debian.tar.xz
+Checksums-Sha256:
+ 5c435fde2027658c4552b9829aeea1ebc62fd664631de198c26b1da991e7a5dd 3840 util-linux_2.27.1-6ubuntu3.dsc
+ 0a818fcdede99aec43ffe6ca5b5388bff80d162f2f7bd4541dca94fecb87a290 3964512 util-linux_2.27.1.orig.tar.xz
+ d9965e52b069127e9050cc180785ce2f9cbd03f84ef72e0bedfbb27d75868843 82056 util-linux_2.27.1-6ubuntu3.debian.tar.xz
+
+Package: util-linux
+Binary: util-linux, util-linux-locales, mount, bsdutils, fdisk-udeb, libblkid1, libblkid1-udeb, libblkid-dev, libfdisk1, libfdisk1-udeb, libfdisk-dev, libmount1, libmount-dev, libsmartcols1, libsmartcols1-udeb, libsmartcols-dev, libuuid1, uuid-runtime, libuuid1-udeb, uuid-dev, util-linux-udeb
+Version: 2.27.1-6ubuntu3.1
+Priority: required
+Section: utils
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Debian util-linux Maintainers &lt;ah-util-linux@debian.org&gt;
+Build-Depends: autoconf, automake, autopoint, debhelper (&gt;= 9.20141010), dh-autoreconf, dh-exec (&gt;= 0.13), dh-systemd (&gt;= 1.5), dpkg-dev (&gt;= 1.17.14), gettext, libncurses5-dev, libncursesw5-dev, libpam0g-dev &lt;!stage1&gt;, libselinux1-dev [linux-any], libsystemd-dev [linux-any] &lt;!stage1&gt;, libtool, libudev-dev [linux-any] &lt;!stage1&gt;, pkg-config, po-debconf, systemd [linux-any] &lt;!stage1&gt;, zlib1g-dev
+Architecture: any all
+Standards-Version: 3.9.6
+Format: 3.0 (quilt)
+Directory: pool/main/u/util-linux
+Files:
+ b5b44af05d263db6ef73eede62eb1685 3208 util-linux_2.27.1-6ubuntu3.1.dsc
+ 3cd2698d1363a2c64091c2dadc974647 3964512 util-linux_2.27.1.orig.tar.xz
+ f8cbdd5b622d2f9fa9132aa65387e17a 82620 util-linux_2.27.1-6ubuntu3.1.debian.tar.xz
+Uploaders: LaMont Jones &lt;lamont@debian.org&gt;, Andreas Henriksson &lt;andreas@fatal.se&gt;, Adam Conrad &lt;adconrad@0c3.net&gt;
+Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/pkg-util-linux.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/pkg-util-linux.git
+Testsuite: autopkgtest
+Package-List:
+ bsdutils deb utils required arch=any profile=!stage1 essential=yes
+ fdisk-udeb udeb debian-installer extra arch=hurd-any,linux-any profile=!stage1
+ libblkid-dev deb libdevel optional arch=any
+ libblkid1 deb libs required arch=any
+ libblkid1-udeb udeb debian-installer optional arch=any
+ libfdisk-dev deb libdevel optional arch=any
+ libfdisk1 deb libs required arch=any
+ libfdisk1-udeb udeb debian-installer optional arch=any
+ libmount-dev deb libdevel optional arch=linux-any
+ libmount1 deb libs required arch=any
+ libsmartcols-dev deb libdevel optional arch=any
+ libsmartcols1 deb libs required arch=any
+ libsmartcols1-udeb udeb debian-installer optional arch=any
+ libuuid1 deb libs required arch=any
+ libuuid1-udeb udeb debian-installer optional arch=any
+ mount deb admin required arch=linux-any profile=!stage1 essential=yes
+ util-linux deb utils required arch=any profile=!stage1 essential=yes
+ util-linux-locales deb localization optional arch=all profile=!stage1
+ util-linux-udeb udeb debian-installer optional arch=any profile=!stage1
+ uuid-dev deb libdevel optional arch=any
+ uuid-runtime deb utils optional arch=any profile=!stage1
+Checksums-Sha1:
+ caeb04fa74c62eda4d671dea33e4b96fe2f8743d 3208 util-linux_2.27.1-6ubuntu3.1.dsc
+ 462bca6320535d39b62216d8609da5531bfef0bb 3964512 util-linux_2.27.1.orig.tar.xz
+ 5a28769e3ecba7682d7fe68383f1b898909d8990 82620 util-linux_2.27.1-6ubuntu3.1.debian.tar.xz
+Checksums-Sha256:
+ 2c0772ea9302b2a9f681c0aa0b2116352eb2ec080bf0bec9ae1e8200c6ada155 3208 util-linux_2.27.1-6ubuntu3.1.dsc
+ 0a818fcdede99aec43ffe6ca5b5388bff80d162f2f7bd4541dca94fecb87a290 3964512 util-linux_2.27.1.orig.tar.xz
+ c4b1dd6c728e0ecacb256df3b5ec8f415147f3c7b7b28d2f982047b14504fa65 82620 util-linux_2.27.1-6ubuntu3.1.debian.tar.xz</code></pre>
+				<aside class="copyright" role="note">
+					 Copyright (c) foreachsam &ndash;  Documentation built with
+					<a href="http://www.mkdocs.org" target="_blank">MkDocs</a> using the
+					<a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a> theme.
+				</aside>
+				
+				<footer class="footer">
+					
+<nav class="pagination" aria-label="Footer">
+	<div class="previous">
+		
+		<a href="../" title="index">
+			<span class="direction">
+            上一頁
+          </span>
+			<div class="page">
+				<div class="button button-previous" role="button" aria-label="Previous">
+					<i class="icon icon-back"></i>
+				</div>
+				<div class="stretch">
+					<div class="title">
+						index
+					</div>
+				</div>
+			</div>
+		</a>
+		
+	</div>
+	<div class="next">
+		
+		<a href="../../command/lsblk/" title="lsblk">
+			<span class="direction">
+            下一頁
+          </span>
+			<div class="page">
+				<div class="stretch">
+					<div class="title">
+						lsblk
+					</div>
+				</div>
+				<div class="button button-next" role="button" aria-label="Next">
+					<i class="icon icon-forward"></i>
+				</div>
+			</div>
+		</a>
+		
+	</div>
+</nav>
+
+				</footer>
+				
+			</div>
+		</article>
+		<div class="results" role="status" aria-live="polite">
+			<div class="scrollable">
+				<div class="wrapper">
+					<div class="meta"></div>
+					<div class="list"></div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script>
+		var base_url = '../../..';
+		var repo_id = '';
+	</script>
+	<script src="../../../assets/javascripts/application-997097ee0c.js"></script>
+	
+
+
+<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document,
+		'script', '//www.google-analytics.com/analytics.js', 'ga');
+	/* General initialization */
+	ga('create', 'UA-56999876-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+	/* Track outbound links */
+	var buttons = document.querySelectorAll('a');
+	Array.prototype.map.call(buttons, function(item) {
+		if (item.host != document.location.host) {
+			item.addEventListener('click', function() {
+				var action = item.getAttribute('data-action') || 'follow';
+				ga('send', 'event', 'outbound', action, item.href);
+			});
+		}
+	});
+	/* Register handler to log search on blur */
+	var query = document.querySelector('.query');
+	query.addEventListener('blur', function() {
+		if (this.value) {
+			var path = document.location.pathname;
+			ga('send', 'pageview', path + '?q=' + this.value);
+		}
+	});
+</script>
+
+
+</body>
+
+</html>
