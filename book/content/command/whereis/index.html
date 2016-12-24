@@ -11,19 +11,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
 
-<title>lsblk - util-linux 使用筆記</title>
+<title>whereis - util-linux 使用筆記</title>
 
 
-<link rel="canonical" href="https://foreachsam.github.io/book-util-util-linux/book/content/command/lsblk/">
+<link rel="canonical" href="https://foreachsam.github.io/book-util-util-linux/book/content/command/whereis/">
 
 
 <meta name="author" content="foreachsam">
 
 
-<meta property="og:url" content="https://foreachsam.github.io/book-util-util-linux/book/content/command/lsblk/">
-<meta property="og:title" content="lsblk - util-linux 使用筆記">
+<meta property="og:url" content="https://foreachsam.github.io/book-util-util-linux/book/content/command/whereis/">
+<meta property="og:title" content="whereis - util-linux 使用筆記">
 
-<meta name="apple-mobile-web-app-title" content="lsblk - util-linux 使用筆記">
+<meta name="apple-mobile-web-app-title" content="whereis - util-linux 使用筆記">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">  
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../assets/images/favicon.ico">
@@ -94,7 +94,7 @@
                 command <i class="icon icon-link"></i>
               
             
-          </span>  lsblk
+          </span>  whereis
 			</div>
 		</div>
 		  
@@ -218,21 +218,8 @@
 			
 <li>
 	<div itemscope itemtype="http://schema.org/Article">
-		<a class="" title="whereis" href="../whereis/" itemprop="url">
+		<a class="current" title="whereis" href="./" itemprop="url">
 			whereis
-    	</a>
-	</div>
-	
-</li>
-
-
-		
-
-			
-<li>
-	<div itemscope itemtype="http://schema.org/Article">
-		<a class="current" title="lsblk" href="./" itemprop="url">
-			lsblk
     	</a>
 	</div>
 	    
@@ -264,16 +251,16 @@
 		
 		<li class="anchor" >
 			<div itemscope itemtype="http://schema.org/Article">
-				<a title="查詢 lsblk 放在那個位置" href="#lsblk" >
-                	查詢 lsblk 放在那個位置
+				<a title="查詢 whereis 放在那個位置" href="#whereis" >
+                	查詢 whereis 放在那個位置
 				</a>
 			</div>
 		</li>
 		
 		<li class="anchor" >
 			<div itemscope itemtype="http://schema.org/Article">
-				<a title="查詢 lsblk 屬於那個套件" href="#lsblk_1" >
-                	查詢 lsblk 屬於那個套件
+				<a title="查詢 whereis 屬於那個套件" href="#whereis_1" >
+                	查詢 whereis 屬於那個套件
 				</a>
 			</div>
 		</li>
@@ -288,6 +275,19 @@
 		
 	</ul>
 	 
+</li>
+
+
+		
+
+			
+<li>
+	<div itemscope itemtype="http://schema.org/Article">
+		<a class="" title="lsblk" href="../lsblk/" itemprop="url">
+			lsblk
+    	</a>
+	</div>
+	
 </li>
 
 
@@ -317,174 +317,159 @@
 		</div>
 		<article class="article">
 			<div class="wrapper">
-				 <h1 id="lsblk-command">lsblk command</h1>
+				 <h1 id="whereis-command">whereis command</h1>
+<p>請對照下面幾個指令的用法</p>
+<ul>
+<li>「<a href="https://foreachsam.github.io/book-util-debianutils/book/content/command/which/">which</a>」</li>
+<li>「<a href="https://foreachsam.github.io/book-lang-bash/book/content/help/type/">type</a>」</li>
+</ul>
 <h2 id="help">觀看 help</h2>
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ lsblk --help</code></pre>
+<pre class="code"><code class="language-bash">$ whereis --help</code></pre>
 
 
 <p>或是執行</p>
-<pre class="code"><code class="language-bash">$ lsblk -h</code></pre>
+<pre class="code"><code class="language-bash">$ whereis -h</code></pre>
 
 
 <p>顯示</p>
 <pre class="code"><code>Usage:
- lsblk [options] [&lt;device&gt; ...]
+ whereis [options] [-BMS &lt;dir&gt;... -f] &lt;name&gt;
 
-List information about block devices.
+Locate the binary, source, and manual-page files for a command.
 
 Options:
- -a, --all            print all devices
- -b, --bytes          print SIZE in bytes rather than in human readable format
- -d, --nodeps         don't print slaves or holders
- -D, --discard        print discard capabilities
- -e, --exclude &lt;list&gt; exclude devices by major number (default: RAM disks)
- -f, --fs             output info about filesystems
- -i, --ascii          use ascii characters only
- -I, --include &lt;list&gt; show only devices with specified major numbers
- -J, --json           use JSON output format
- -l, --list           use list format output
- -m, --perms          output info about permissions
- -n, --noheadings     don't print headings
- -o, --output &lt;list&gt;  output columns
- -O, --output-all     output all columns
- -p, --paths          print complete device path
- -P, --pairs          use key=&quot;value&quot; output format
- -r, --raw            use raw output format
- -s, --inverse        inverse dependencies
- -S, --scsi           output info about SCSI devices
- -t, --topology       output info about topology
- -x, --sort &lt;column&gt;  sort output by &lt;column&gt;
+ -b         search only for binaries
+ -B &lt;dirs&gt;  define binaries lookup path
+ -m         search only for manuals and infos
+ -M &lt;dirs&gt;  define man and info lookup path
+ -s         search only for sources
+ -S &lt;dirs&gt;  define sources lookup path
+ -f         terminate &lt;dirs&gt; argument list
+ -u         search for unusual entries
+ -l         output effective lookup paths
 
- -h, --help     display this help and exit
- -V, --version  output version information and exit
-
-Available columns (for --output):
-        NAME  device name
-       KNAME  internal kernel device name
-     MAJ:MIN  major:minor device number
-      FSTYPE  filesystem type
-  MOUNTPOINT  where the device is mounted
-       LABEL  filesystem LABEL
-        UUID  filesystem UUID
-    PARTTYPE  partition type UUID
-   PARTLABEL  partition LABEL
-    PARTUUID  partition UUID
-   PARTFLAGS  partition flags
-          RA  read-ahead of the device
-          RO  read-only device
-          RM  removable device
-     HOTPLUG  removable or hotplug device (usb, pcmcia, ...)
-       MODEL  device identifier
-      SERIAL  disk serial number
-        SIZE  size of the device
-       STATE  state of the device
-       OWNER  user name
-       GROUP  group name
-        MODE  device node permissions
-   ALIGNMENT  alignment offset
-      MIN-IO  minimum I/O size
-      OPT-IO  optimal I/O size
-     PHY-SEC  physical sector size
-     LOG-SEC  logical sector size
-        ROTA  rotational device
-       SCHED  I/O scheduler name
-     RQ-SIZE  request queue size
-        TYPE  device type
-    DISC-ALN  discard alignment offset
-   DISC-GRAN  discard granularity
-    DISC-MAX  discard max bytes
-   DISC-ZERO  discard zeroes data
-       WSAME  write same max bytes
-         WWN  unique storage identifier
-        RAND  adds randomness
-      PKNAME  internal parent kernel device name
-        HCTL  Host:Channel:Target:Lun for SCSI
-        TRAN  device transport type
-  SUBSYSTEMS  de-duplicated chain of subsystems
-         REV  device revision
-      VENDOR  device vendor
-
-For more details see lsblk(8).</code></pre>
+For more details see whereis(1).</code></pre>
 
 
 <h2 id="_1">觀看版本</h2>
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ lsblk -V</code></pre>
-
-
-<p>或是執行</p>
-<pre class="code"><code class="language-bash">$ lsblk --version</code></pre>
+<pre class="code"><code class="language-bash">$ whereis -V</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>lsblk from util-linux 2.27.1</code></pre>
+<pre class="code"><code>whereis from util-linux 2.27.1</code></pre>
 
 
 <h2 id="manpage">觀看 manpage</h2>
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ whatis lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ whatis whereis</code></pre>
 
 
 <p>或是執行</p>
-<pre class="code"><code class="language-bash">$ man -k lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ man -k whereis</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code class="language-bash">lsblk (8)            - list block devices</code></pre>
+<pre class="code"><code class="language-bash">whereis (1)          - locate the binary, source, and manual page files for a command</code></pre>
 
 
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ man lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ man whereis</code></pre>
 
 
 <p>或是執行</p>
-<pre class="code"><code class="language-bash">$ man 8 lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ man 1 whereis</code></pre>
 
 
-<p>會看到「<a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lsblk.8.html">說明</a>」。</p>
-<h2 id="lsblk">查詢 lsblk 放在那個位置</h2>
+<p>會看到「<a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/whereis.1.html">說明</a>」。</p>
+<h2 id="whereis">查詢 whereis 放在那個位置</h2>
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ whereis lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ whereis whereis</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>lsblk: /bin/lsblk /usr/share/man/man8/lsblk.8.gz</code></pre>
+<pre class="code"><code>whereis: /usr/bin/whereis /usr/share/man/man1/whereis.1.gz</code></pre>
 
 
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ which lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ which whereis</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>/bin/lsblk</code></pre>
+<pre class="code"><code>/usr/bin/whereis</code></pre>
 
 
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ type lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ type whereis</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>lsblk is hashed (/bin/lsblk)</code></pre>
+<pre class="code"><code>whereis is hashed (/usr/bin/whereis)</code></pre>
 
 
-<h2 id="lsblk_1">查詢 lsblk 屬於那個套件</h2>
+<h2 id="whereis_1">查詢 whereis 屬於那個套件</h2>
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ dpkg -S /bin/lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ dpkg -S /usr/bin/whereis</code></pre>
 
 
 <p>或是執行</p>
-<pre class="code"><code class="language-bash">$ dpkg -S $(which lsblk)</code></pre>
+<pre class="code"><code class="language-bash">$ dpkg -S $(which whereis)</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>util-linux: /bin/lsblk</code></pre>
+<pre class="code"><code>util-linux: /usr/bin/whereis</code></pre>
 
 
-<p>表示「/bin/lsblk」是屬於「<a href="http://packages.ubuntu.com/xenial/util-linux">util-linux</a>」這個套件。</p>
+<p>表示「/usr/bin/whereis」是屬於「<a href="http://packages.ubuntu.com/xenial/util-linux">util-linux</a>」這個套件。</p>
 <h2 id="_2">使用範例</h2>
 <p>執行</p>
-<pre class="code"><code class="language-bash">$ lsblk</code></pre>
+<pre class="code"><code class="language-bash">$ whereis bash</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>bash: /bin/bash /etc/bash.bashrc /usr/share/man/man1/bash.1.gz /usr/share/info/bash.info.gz</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-bash">$ whereis -b bash</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>bash: /bin/bash /etc/bash.bashrc</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-bash">$ whereis -m bash</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>bash: /usr/share/man/man1/bash.1.gz /usr/share/info/bash.info.gz</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-bash">$ whereis -l</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>bin: /usr/bin
+bin: /usr/sbin
+bin: /usr/lib
+bin: /bin
+bin: /sbin
+bin: /etc
+bin: /lib
+bin: /lib64
+bin: /usr/games
+bin: /usr/local/bin
+bin: /usr/local/sbin
+bin: /usr/local/etc
+bin: /usr/local/lib
+bin: /usr/local/games
+bin: /usr/include
+bin: /usr/local
+bin: /usr/share
+...略...</code></pre>
 				<aside class="copyright" role="note">
 					 Copyright (c) foreachsam &ndash;  Documentation built with
 					<a href="http://www.mkdocs.org" target="_blank">MkDocs</a> using the
@@ -498,7 +483,7 @@ For more details see lsblk(8).</code></pre>
 <nav class="pagination" aria-label="Footer">
 	<div class="previous">
 		
-		<a href="../whereis/" title="whereis">
+		<a href="../../deb-package/util-linux/" title="util-linux">
 			<span class="direction">
             上一頁
           </span>
@@ -508,7 +493,7 @@ For more details see lsblk(8).</code></pre>
 				</div>
 				<div class="stretch">
 					<div class="title">
-						whereis
+						util-linux
 					</div>
 				</div>
 			</div>
@@ -516,6 +501,22 @@ For more details see lsblk(8).</code></pre>
 		
 	</div>
 	<div class="next">
+		
+		<a href="../lsblk/" title="lsblk">
+			<span class="direction">
+            下一頁
+          </span>
+			<div class="page">
+				<div class="stretch">
+					<div class="title">
+						lsblk
+					</div>
+				</div>
+				<div class="button button-next" role="button" aria-label="Next">
+					<i class="icon icon-forward"></i>
+				</div>
+			</div>
+		</a>
 		
 	</div>
 </nav>
